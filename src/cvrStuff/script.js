@@ -91,7 +91,9 @@
         ca = co = pr = cg = bt = cvr = null;
 
         var save = document.createElement('a');
-        save.href = 'data:application/json;charset=utf-8,' + JSON.stringify(result);
+        var file = new File([JSON.stringify(result)], 'converted.json', { type: 'application/json'});
+        alert('ok')
+        save.href = URL.createObjectURL(file);
         save.download = 'filename.json';
         save.click();
       } catch (e) {
