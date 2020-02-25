@@ -91,7 +91,7 @@
         ca = co = pr = cg = bt = cvr = null;
 
         var save = document.createElement('a');
-        save.href = 'data:application/json;charset=utf-8,' + JSON.stringify({a: true});
+        save.href = 'data:application/json;charset=utf-8,' + JSON.stringify(result);
         save.download = 'filename.json';
         save.click();
       } catch (e) {
