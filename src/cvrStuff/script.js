@@ -33,7 +33,13 @@
       return arr;
     }
 
+    var counter = 0;
+    console.log('Found', cvrData.Sessions.length);
+
     return cvrData.Sessions.map( function ( session ) {
+      if (++counter % 1000 === 0)
+        console.log('Finished', counter)
+
       let ballot = session.Modified || session.Original;
       let data = {
         countingGroup: countingGroups[ session.CountingGroupId ],
@@ -55,11 +61,21 @@
     fileInput = $('#input-input');
     inputList = $('#input-list');
 
+    inputBtn.on('dragover', e => { e.preventDefault(); inputBtn.addClass('ready-input'); });
+    inputBtn.on('dragexit', e => { e.preventDefault(); inputBtn.removeClass('ready-input'); });
+    inputBtn.on('drop', e => {
+      e.preventDefault();
+      inputBtn.removeClass('ready-input');
+      fileInput.get(0).files = e.originalEvent.dataTransfer.files;
+      fileInput.trigger('change', e.originalEvent.target.files);
+    });
+
+
     fileInput.on('change', async e => {
       try {
         files.length = 0;
-        for (var i = 0; i < e.originalEvent.target.files.length; i++) {
-          files.push(e.originalEvent.target.files[i])
+        for (var i = 0; i < fileInput.get(0).files.length; i++) {
+          files.push(fileInput.get(0).files[i])
         }
 
         data = {};
@@ -80,6 +96,7 @@
         save.click();
       } catch (e) {
         addError(e);
+        throw e;
       }
     });
 
@@ -111,7 +128,7 @@
     try {
       return await parseFile(theFile);
     } catch (e) {
-      throw new Error('Could not read file ' + theFile.name + ' for ' + name);
+      throw new Error('Could not read file ' /*+ theFile && theFile.name || undefined*/ + ' for ' + name);
     }
   }
 
