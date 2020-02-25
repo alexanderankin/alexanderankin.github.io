@@ -92,7 +92,6 @@
 
         var save = document.createElement('a');
         var file = new File([JSON.stringify(result)], 'converted.json', { type: 'application/json'});
-        alert('ok')
         save.href = URL.createObjectURL(file);
         save.download = 'filename.json';
         save.click();
