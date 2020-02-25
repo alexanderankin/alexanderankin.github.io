@@ -135,6 +135,7 @@
   $(main);
 
   function addError(title, message) {
+    console.log(title, message)
     $('#errors').append($(
         '<div class="alert alert-danger" role="alert">' + 
         '<button type="button" onclick="this.parentElement.remove()" class="btn btn-default btn-sm"><i class="fa fa-times"></i></button>' +
