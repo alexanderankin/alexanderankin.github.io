@@ -1,0 +1,17 @@
+#show-hide {
+  /*position: relative;
+  top: 10px;
+  left: 10px;*/
+}
+
+.mycol {
+    /*overflow: hidden;*/
+  /*max-width: 100px;*/
+  -webkit-transition: max-width .5s ease;
+  transition: max-width .5s ease;
+}
+
+.ready-input {
+  opacity: 0.5;
+  border: 2px dashed lightgrey;
+}
