@@ -111,7 +111,13 @@
     return new Promise((resolve, reject) => {
       var reader = new FileReader();
       reader.onerror = () => reject(reader.error);
-      reader.onload = () => resolve(JSON.parse(reader.result));
+      reader.onload = () => {
+        try {
+          resolve(JSON.parse(reader.result));
+        } catch(e) {
+          reject(new Error('Bad JSON: ' + file));
+        }
+      };
       reader.readAsBinaryString(file);
     });
   }
