@@ -113,11 +113,11 @@
                   const editToggles = root.querySelectorAll('.random-order-edit-paste-toggle');
                   const editEdit = root.querySelector('.random-order-edit-paste-textarea');
                   const editDisplay = root.querySelector('.random-order-edit-paste-display')
-                  const toggleButton = root.querySelector('.random-order-edit-paste-toggle-btn');
+                  const editPasteToggleButton = root.querySelector('.random-order-edit-paste-toggle-btn');
                   const saveButton = root.querySelector('.random-order-save');
                   const randomButton = root.querySelector('.random-order-shuffle-button');
                   const randomDisplay = root.querySelector('.random-order-shuffled-display');
-                  const saveName = root.querySelector('.random-order-save-name');
+                  const listNameForSaving = root.querySelector('.random-order-save-name');
                   const dropdownShower = root.querySelector('.random-order-list-picker-dropdown-shower')
                   const dropdown = root.querySelector('.random-order-list-picker-dropdown')
                   const dropdownToggle = new DropdownToggle(dropdownShower);
@@ -140,8 +140,8 @@
                   data.names[data.current] = data.names[data.current] || [];
 
                   // initial ui data
-                  setCurrent(data.current);
-                  setNames(data.names[data.current]);
+                  setCurrentList(data.current);
+                  setListData(data.names[data.current]);
                   dropdownItemManager.setNames(Object.keys(data.names));
 
                   // because why make people wait
@@ -150,14 +150,14 @@
                   // setup callback for ui data - picking a list
                   dropdownItemManager.setCallback(list => {
                     if (!(list in data.names)) return;
-                    setCurrent(list);
-                    setNames(data.names[list]);
+                    setCurrentList(list);
+                    setListData(data.names[list]);
                   });
 
-                  toggleButton.addEventListener('click', function toggleEditingOrViewing() {
+                  editPasteToggleButton.addEventListener('click', function toggleEditingOrViewing() {
                     editToggles.forEach(e => e.classList.toggle('d-none'))
                     let editing = isVisible(editEdit);
-                    toggleButton.textContent = editing ? 'Confirm' : 'Edit/Paste';
+                    editPasteToggleButton.textContent = editing ? 'Confirm' : 'Edit/Paste';
 
                     if (editing) {
                       let nodes = Array.from(editDisplay.querySelectorAll('.list-group-item'));
@@ -166,14 +166,14 @@
                       const heightInPixels = nodes.length === 0 ? 150 : (nodes.length + 1) * 25;
                       editEdit.style.height = heightInPixels + 'px';
                     } else {
-                      setNames(editEdit.value.split('\n').filter(Boolean));
+                      setListData(editEdit.value.split('\n').filter(Boolean));
                     }
                   })
 
                   saveButton.addEventListener('click', () => {
-                    let current = getCurrent();
+                    let current = getCurrentList();
                     let names = data.names;
-                    names[current] = getNames();
+                    names[current] = getListData();
 
                     dropdownItemManager.setNames(Object.keys(names));
                     let content = JSON.stringify({
@@ -186,48 +186,33 @@
                   randomButton.addEventListener('click', randomizeNames);
 
                   deleteButton.addEventListener('click', () => {
-                    const current = getCurrent();
+                    const current = getCurrentList();
                     if (current === 'default') {
-                      setNames([]);
+                      setListData([]);
                       return
                     }
 
                     if (!confirm('are you sure you want to delete this list?')) return;
 
                     delete data.names[current];
-                    setCurrent('default')
-                    setNames(data.names.default);
+                    setCurrentList('default')
+                    setListData(data.names.default);
                     dropdownItemManager.setNames(Object.keys(data.names));
 
                     saveButton.click();
                   });
 
                   function randomizeNames() {
-                    let names = getNames();
+                    let names = getListData();
                     let shuffled = shuffle(shuffle(shuffle(names)));
-                    setNames(shuffled, randomDisplay);
-                  }
-
-                  /**
-                   * @param {any[]} array
-                   */
-                  function shuffle(array) {
-                    // https://stackoverflow.com/a/46545530
-                    return array.map(v => ({ v, s_: Math.random() })).sort((a, b) => a.s_ - b.s_).map(({ v }) => v);
-                  }
-
-                  /**
-                   * @param {Element} htmlElement
-                   */
-                  function isVisible(htmlElement) {
-                    return !htmlElement.classList.contains('d-none');
+                    setListData(shuffled, randomDisplay);
                   }
 
                   /**
                    * @param {string[]} names
                    * @param {Element} where
                    */
-                  function setNames(names, where = editDisplay) {
+                  function setListData(names, where = editDisplay) {
                     where.replaceChildren(...(names
                             .map(e => {
                               const span = document.createElement('span')
@@ -241,7 +226,7 @@
                   /**
                    * @return {string[]}
                    */
-                  function getNames() {
+                  function getListData() {
                     if (isVisible(editEdit))
                       return editEdit.value.split('\n').filter(Boolean);
                     else
@@ -251,17 +236,34 @@
                   /**
                    * @return {string}
                    */
-                  function getCurrent() {
-                    return saveName.value
+                  function getCurrentList() {
+                    return listNameForSaving.value
                   }
 
                   /**
                    * @param {string} name
                    */
-                  function setCurrent(name) {
-                    saveName.value = name
+                  function setCurrentList(name) {
+                    listNameForSaving.value = name
                   }
                 })
+
+                // utility stuff:
+
+                /**
+                 * @param {any[]} array
+                 */
+                function shuffle(array) {
+                  // https://stackoverflow.com/a/46545530
+                  return array.map(v => ({ v, s_: Math.random() })).sort((a, b) => a.s_ - b.s_).map(({ v }) => v);
+                }
+
+                /**
+                 * @param {Element} htmlElement
+                 */
+                function isVisible(htmlElement) {
+                  return !htmlElement.classList.contains('d-none');
+                }
 
                 /**
                  * @param {Element} element
