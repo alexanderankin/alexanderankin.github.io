@@ -1,0 +1,344 @@
+<!--suppress JSUnresolvedLibraryURL -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hello, World!</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <!-- <script src="script.js"></script> -->
+
+  </head>
+  <body>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">
+        <a href=".."><span class="navbar-brand mb-0 h1">Hello, World!</span></a>
+      </span>
+      <span class="navbar-brand mb-0 h1">
+        <a href="https://github.com/alexanderankin/alexanderankin.github.io/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/dave-ankin-52123466/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+      </span>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="..">Home</a></li>
+                <li class="breadcrumb-item"><a href="..">Tools</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Random order</li>
+              </ol>
+            </nav>
+
+            <h1>Random order</h1>
+            <p>e.g. for stand-up speaking order</p>
+            <p><a href="#">Save</a> saves chosen list and all lists' contents into local storage</p>
+          </div>
+        </div>
+        <div id="7025ae79-d637-4307-80b3-d286c07a42ef">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <button role="button" class="btn btn-info random-order-shuffle-button">Randomize</button>
+              <hr class="d-block d-md-none"/>
+              <div class="list-group my-2 random-order-shuffled-display"></div>
+              <hr class="d-block d-md-none"/>
+            </div>
+            <div class="col-12 col-md-6">
+              <!-- where the application lives -->
+              <button role="button" class="btn btn-outline-info random-order-edit-paste-toggle-btn">Edit/Paste</button>
+              <button role="button" class="btn btn-outline-success random-order-save">Save</button>
+              <label class="mb-0"><input type="text" class="form-control random-order-save-name"></label>
+
+              <!-- Example split danger button -->
+              <div class="btn-group">
+                <button type="button"
+                        class="btn btn-warning dropdown-toggle dropdown-toggle-split random-order-list-picker-dropdown-shower"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-dropdown-to-show=".random-order-list-picker-dropdown">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right random-order-list-picker-dropdown">
+                  <span class="dropdown-item">Action</span>
+                </div>
+              </div>
+              <button role="button" class="btn btn-outline-danger random-order-edit-delete-list"><i class="fa fa-trash"></i></button>
+
+              <div class="list-group my-2 random-order-edit-paste-toggle random-order-edit-paste-display"></div>
+              <div class="mt-2">
+                <label class="w-100">
+                  <textarea class="w-100 d-none random-order-edit-paste-toggle random-order-edit-paste-textarea"></textarea>
+                </label>
+              </div>
+
+              <script>
+                // static setup
+                let rODbi = document.createElement('style');
+                // language=css
+                rODbi.append(document.createTextNode('.random-order-display-block-important { display: block !important; }'));
+                document.head.append(rODbi);
+
+                $(async () => {
+                  // find instance on the page
+                  const instanceId = '7025ae79-d637-4307-80b3-d286c07a42ef';
+                  const root = document.getElementById(instanceId);
+
+                  // create instance of random order in this closure
+                  const localStorageKey = 'random-order-edit-paste-localStorage.' + instanceId;
+                  const editToggles = root.querySelectorAll('.random-order-edit-paste-toggle');
+                  const editEdit = root.querySelector('.random-order-edit-paste-textarea');
+                  const editDisplay = root.querySelector('.random-order-edit-paste-display')
+                  const toggleButton = root.querySelector('.random-order-edit-paste-toggle-btn');
+                  const saveButton = root.querySelector('.random-order-save');
+                  const randomButton = root.querySelector('.random-order-shuffle-button');
+                  const randomDisplay = root.querySelector('.random-order-shuffled-display');
+                  const saveName = root.querySelector('.random-order-save-name');
+                  const dropdownShower = root.querySelector('.random-order-list-picker-dropdown-shower')
+                  const dropdown = root.querySelector('.random-order-list-picker-dropdown')
+                  const dropdownToggle = new DropdownToggle(dropdownShower);
+                  const dropdownItemManager = new DropdownItemManager(dropdown, () => dropdownToggle.toggle());
+                  const deleteButton = root.querySelector('.random-order-edit-delete-list');
+
+                  // localStorage.removeItem(localStorageKey);
+
+                  // initialize instance:
+                  /**
+                   * @type {{names: Object.<string, string[]>, current: string} | null}
+                   */
+                  let data = await Promise.resolve(localStorage.getItem(localStorageKey))
+                          .then(e => JSON.parse(e))
+                          .catch(() => localStorage.removeItem(localStorageKey) || null);
+
+                  data = data || {};
+                  data.current = data.current?.length ? data.current : 'default';
+                  if (!data.names) data.names = {'default': []};
+                  data.names[data.current] = data.names[data.current] || [];
+
+                  // initial ui data
+                  setCurrent(data.current);
+                  setNames(data.names[data.current]);
+                  dropdownItemManager.setNames(Object.keys(data.names));
+
+                  // because why make people wait
+                  randomizeNames();
+
+                  // setup callback for ui data - picking a list
+                  dropdownItemManager.setCallback(list => {
+                    if (!(list in data.names)) return;
+                    setCurrent(list);
+                    setNames(data.names[list]);
+                  });
+
+                  toggleButton.addEventListener('click', function toggleEditingOrViewing() {
+                    editToggles.forEach(e => e.classList.toggle('d-none'))
+                    let editing = isVisible(editEdit);
+                    toggleButton.textContent = editing ? 'Confirm' : 'Edit/Paste';
+
+                    if (editing) {
+                      let nodes = Array.from(editDisplay.querySelectorAll('.list-group-item'));
+                      editEdit.value = nodes.map(e => e.innerText).join('\n')
+
+                      const heightInPixels = nodes.length === 0 ? 150 : (nodes.length + 1) * 25;
+                      editEdit.style.height = heightInPixels + 'px';
+                    } else {
+                      setNames(editEdit.value.split('\n').filter(Boolean));
+                    }
+                  })
+
+                  saveButton.addEventListener('click', () => {
+                    let current = getCurrent();
+                    let names = data.names;
+                    names[current] = getNames();
+
+                    dropdownItemManager.setNames(Object.keys(names));
+                    let content = JSON.stringify({
+                      names,
+                      current,
+                    });
+                    localStorage.setItem(localStorageKey, content);
+                  });
+
+                  randomButton.addEventListener('click', randomizeNames);
+
+                  deleteButton.addEventListener('click', () => {
+                    const current = getCurrent();
+                    if (current === 'default') {
+                      setNames([]);
+                      return
+                    }
+
+                    if (!confirm('are you sure you want to delete this list?')) return;
+
+                    delete data.names[current];
+                    setCurrent('default')
+                    setNames(data.names.default);
+                    dropdownItemManager.setNames(Object.keys(data.names));
+
+                    saveButton.click();
+                  });
+
+                  function randomizeNames() {
+                    let names = getNames();
+                    let shuffled = shuffle(shuffle(shuffle(names)));
+                    setNames(shuffled, randomDisplay);
+                  }
+
+                  /**
+                   * @param {any[]} array
+                   */
+                  function shuffle(array) {
+                    // https://stackoverflow.com/a/46545530
+                    return array.map(v => ({ v, s_: Math.random() })).sort((a, b) => a.s_ - b.s_).map(({ v }) => v);
+                  }
+
+                  /**
+                   * @param {Element} htmlElement
+                   */
+                  function isVisible(htmlElement) {
+                    return !htmlElement.classList.contains('d-none');
+                  }
+
+                  /**
+                   * @param {string[]} names
+                   * @param {Element} where
+                   */
+                  function setNames(names, where = editDisplay) {
+                    where.replaceChildren(...(names
+                            .map(e => {
+                              const span = document.createElement('span')
+                              span.classList.add('list-group-item')
+                              span.appendChild(document.createTextNode(e))
+                              return span
+                            })))
+                    editEdit.value = names.join('\n');
+                  }
+
+                  /**
+                   * @return {string[]}
+                   */
+                  function getNames() {
+                    if (isVisible(editEdit))
+                      return editEdit.value.split('\n').filter(Boolean);
+                    else
+                      return Array.from(editDisplay.querySelectorAll('.list-group-item')).map(e => e.innerText);
+                  }
+
+                  /**
+                   * @return {string}
+                   */
+                  function getCurrent() {
+                    return saveName.value
+                  }
+
+                  /**
+                   * @param {string} name
+                   */
+                  function setCurrent(name) {
+                    saveName.value = name
+                  }
+                })
+
+                /**
+                 * @param {Element} element
+                 * @param {function(): void | undefined} defaultCb
+                 * @constructor
+                 */
+                function DropdownItemManager(element, defaultCb = undefined) {
+                  this.element = element
+                  this.defaultCb = defaultCb;
+                }
+
+                /**
+                 * https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
+                 * @param {function(string): void} callback
+                 */
+                DropdownItemManager.prototype.setCallback = function (callback) {
+                  this.callback = callback;
+                  if (this.element) {
+                    for (const span of this.element.querySelectorAll('span')) {
+                      if (this.defaultCb) span.addEventListener('click', this.defaultCb);
+                      span.addEventListener('click', () => this.callback(span.innerText));
+                    }
+                  }
+                };
+
+                DropdownItemManager.prototype.setNames = function (names) {
+                  this.element.replaceChildren(...(names
+                          .map(e => {
+                            const span = document.createElement('span')
+                            span.classList.add('dropdown-item')
+                            span.appendChild(document.createTextNode(e))
+                            if (this.callback)
+                              span.addEventListener('click', () => this.callback(e));
+                            return span
+                          })))
+                };
+
+                /**
+                 * @param {HTMLElement} dropdownShower
+                 * @constructor
+                 */
+                function DropdownToggle(dropdownShower) {
+                  this.dropdownShower = dropdownShower;
+                  this.dropdownTarget = document.querySelector(dropdownShower.dataset['dropdownToShow'])
+
+                  if (!this.dropdownTarget) {
+                    if (!DropdownToggle.DROPDOWN_TARGET_ERRORED) {
+                      alert('dropdown toggle without target, see console')
+                      DropdownToggle.DROPDOWN_TARGET_ERRORED = true;
+                    }
+                    console.error('could not identify dropdownTarget from querySelector:', dropdownShower.dataset['dropdownToShow'])
+                  }
+
+                  this.dropdownShower.addEventListener('click', this.toggle.bind(this))
+                }
+
+                DropdownToggle.prototype.toggle = function() {
+                  this.toggleAriaExpanded();
+                  this.dropdownTarget.classList.toggle('random-order-display-block-important')
+                }
+
+                DropdownToggle.prototype.toggleAriaExpanded = function() {
+                  let ariaExpanded = this.dropdownShower.attributes.getNamedItem('aria-expanded')
+                  if (!ariaExpanded) return;
+                  let parse;
+                  try {
+                    parse = JSON.parse(ariaExpanded.value);
+                  } catch (e) {
+                    parse = false
+                  }
+                  ariaExpanded.value = (!parse).toString()
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
