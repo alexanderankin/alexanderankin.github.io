@@ -188,16 +188,16 @@
                   deleteButton.addEventListener('click', () => {
                     const current = getCurrentList();
                     if (current === 'default') {
+                      if (!confirm('are you sure you want to clear this list?')) return;
                       setListData([]);
-                      return
+                    } else {
+                      if (!confirm('are you sure you want to delete this list?')) return;
+
+                      delete data.names[current];
+                      setCurrentList('default')
+                      setListData(data.names.default);
+                      dropdownItemManager.setNames(Object.keys(data.names));
                     }
-
-                    if (!confirm('are you sure you want to delete this list?')) return;
-
-                    delete data.names[current];
-                    setCurrentList('default')
-                    setListData(data.names.default);
-                    dropdownItemManager.setNames(Object.keys(data.names));
 
                     saveButton.click();
                   });
